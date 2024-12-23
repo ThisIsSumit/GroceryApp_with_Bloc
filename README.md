@@ -1,4 +1,4 @@
-# bloc_tutorial
+# Grocery App with Bloc
 
 A new Flutter project.
 
