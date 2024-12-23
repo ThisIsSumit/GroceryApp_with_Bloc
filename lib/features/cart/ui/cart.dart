@@ -22,7 +22,7 @@ class _CartState extends State<Cart> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cart Items'),
+        title: const Text('Cart Items'),
       ),
       body: BlocConsumer<CartBloc, CartState>(
         bloc: cartBloc,
@@ -33,7 +33,7 @@ class _CartState extends State<Cart> {
         buildWhen: (previous, current) => current is! CartActionState,
         builder: (context, state) {
           switch (state.runtimeType) {
-            case CartSuccessState _:
+            case const (CartSuccessState) :
               final successState = state as CartSuccessState;
               return ListView.builder(
                   itemCount: successState.cartItems.length,

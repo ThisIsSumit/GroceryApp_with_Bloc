@@ -29,28 +29,27 @@ class WishlistTileWidget extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Text(productDataModel.name,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              style:
+                  const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           Text(productDataModel.description),
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("\$" + productDataModel.price.toString(),
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Text("\$${productDataModel.price}",
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold)),
               Row(
                 children: [
                   IconButton(
                       onPressed: () {
-                        // wishlistBloc.add(ItemRemoveFromWishListEvent(
-                        //     clickedProduct: productDataModel));
+                        wishlistBloc.add(ItemRemoveFromWishListEvent(
+                            productDataModel: productDataModel));
                       },
-                      icon: Icon(Icons.favorite_border)),
-                  IconButton(
-                      onPressed: () {
-                        // wishlistBloc.add(ItemRemoveFromWishListEvent(
-                        //     productDataModel: productDataModel));
-                      },
-                      icon: Icon(Icons.shopping_bag)),
+                      icon: const Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                      )),
                 ],
               )
             ],

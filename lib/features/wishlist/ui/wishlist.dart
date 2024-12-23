@@ -14,7 +14,6 @@ class _WishlistState extends State<Wishlist> {
   final WishlistBloc wishlistBloc = WishlistBloc();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     wishlistBloc.add(WishListInitialEvent());
   }
@@ -28,9 +27,11 @@ class _WishlistState extends State<Wishlist> {
       body: BlocConsumer<WishlistBloc, WishlistState>(
         bloc: wishlistBloc,
         listener: (context, state) {},
+        listenWhen: (previous, current) => current is WishlistActionState,
+        buildWhen: (previous, current) => current is! WishlistActionState,
         builder: (context, state) {
           switch (state.runtimeType) {
-            case WishlistSuccessState _:
+            case const (WishlistSuccessState) :
               final succesState = state as WishlistSuccessState;
               return ListView.builder(
                   itemCount: succesState.wishListItems.length,
@@ -41,7 +42,7 @@ class _WishlistState extends State<Wishlist> {
                     );
                   });
             default:
-              return Container();
+              return SizedBox();
           }
         },
       ),

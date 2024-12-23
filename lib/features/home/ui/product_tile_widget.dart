@@ -12,7 +12,7 @@ class ProductTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
         surfaceTintColor: Colors.teal,
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         child: Column(children: [
           Container(
             height: 200,
@@ -24,14 +24,16 @@ class ProductTileWidget extends StatelessWidget {
           ),
           const SizedBox(height: 20),
           Text(productDataModel.name,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              style:
+                  const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
           Text(productDataModel.description),
           const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("\$" + productDataModel.price.toString(),
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Text("\$${productDataModel.price}",
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold)),
               Row(
                 children: [
                   IconButton(
@@ -39,13 +41,13 @@ class ProductTileWidget extends StatelessWidget {
                         homeBloc.add(HomeProductWishListButtonClickedEvent(
                             clickedProduct: productDataModel));
                       },
-                      icon: Icon(Icons.favorite_border)),
+                      icon: const Icon(Icons.favorite_border)),
                   IconButton(
                       onPressed: () {
                         homeBloc.add(HomeProductCartButtonClickedEvent(
                             clickedProduct: productDataModel));
                       },
-                      icon: Icon(Icons.shopping_bag_outlined)),
+                      icon: const Icon(Icons.shopping_bag_outlined)),
                 ],
               )
             ],
